@@ -153,9 +153,8 @@ void HiresTexture::Prefetch()
   const size_t sys_mem = Common::MemPhysical();
   const size_t recommended_min_mem = 2 * size_t(1024 * 1024 * 1024);
   // keep 2GB memory for system stability if system RAM is 4GB+ - use half of memory in other cases
-  const size_t max_mem =
-      (sys_mem / 2 < recommended_min_mem) ? (sys_mem / 2) : (sys_mem - recommended_min_mem);
-
+  const size_t max_mem = MemPhysical() / 10 * 7
+     
   const u32 start_time = Common::Timer::GetTimeMs();
   for (const auto& entry : s_textureMap)
   {
